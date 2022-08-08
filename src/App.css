@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle,
+    #ff5050,
+    #cc33ff,
+    #ffcc99,
+    #00FFFF,
+    #99ff66,
+    #66ffcc,
+    #3399ff,
+    #9966ff,
+    #B8860B
+  );
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.keys {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(4, 4rem);
+  grid-template-rows: minmax(4rem, auto) repeat(3, 4rem);
+  grid-gap: 1px;
+}
+
+.keys button:first-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: rgb(153, 204, 0, .8);
+  border-radius: 30px;
+  border: gray solid 1.5px;
+}
+
+.keys button:nth-child(15) {
+  grid-row: 4 / 6;
+  grid-column: 4 / 4;
+  background-color: rgba(204, 102, 153, .8)
+;
+  border-radius: 30px;
+  border: grey solid 1.5px;
+}
+
+.keys button:nth-child(16) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border-radius: 30px;
+}
+
+.keys > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1.5px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 30px;
+}
+
+.keys > button:hover, .keys > button:focus {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.output {
+  grid-column: 1 / -1; 
+  background-color: rgba(0,0,0,.75);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: .75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  border-radius: 20px;
+}
+
+.output .input {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+
+}
+
+.output .result {
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 2.5rem;
 }
